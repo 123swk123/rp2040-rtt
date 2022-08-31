@@ -1,0 +1,33 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "telnet",
+            "type": "shell",
+            "command": "telnet localhost 50002",
+            "problemMatcher": []
+        },
+
+        {
+            "label": "run openocd",
+            "type": "shell",
+            "command": "D:/papps/platforms/rp2040/pico-sdk-tools/build-openocd/bin/openocd.exe",
+            "args": [
+                "-fZ:/Emb/programmer_debugger/debugger/ftdi/rp2040-dev-board-core0-rtt.cfg",
+                "-c","telnet_port 50002",
+                "-c","rtt setup 0x20000000 4096 SEGGER\\ RTT",
+                "-c","init",
+                "-c","program D:/prjs/learnings/rp2040/hello_rtt/out/build/rp2040@default-dbg/test_rtt.elf",
+                "-c","rtt start",
+                "-c","rtt server start 60001 0",
+                "-c","sleep 500;exec telnet localhost 60001 &",
+                "-c","reset run"
+            ],
+            "dependsOn":[],
+            "group": "none",
+            "problemMatcher": []
+        }
+    ]
+}

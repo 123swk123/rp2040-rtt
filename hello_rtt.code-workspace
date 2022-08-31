@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"cortex-debug.registerUseNaturalFormat": true,
+		"cortex-debug.showRTOS": true,
+		"cortex-debug.variableUseNaturalFormat": false,
+		"files.associations": {
+			"*.log": "log",
+			"stdlib.h": "c",
+			"stdio.h": "c",
+			"stdarg.h": "c",
+			"errno.h": "c",
+			"segger_rtt.h": "c",
+			"clocks.h": "c",
+			"pll.h": "c",
+			"vreg.h": "c",
+			"cstdio": "c",
+			"divider.h": "c"
+		},
+		"cmakeLanguageSupport.enableFileAPI": true
+	}
+}

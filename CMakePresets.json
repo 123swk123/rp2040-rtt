@@ -1,0 +1,119 @@
+{
+    "version": 5,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23,
+        "patch": 0
+      },
+      
+    "configurePresets": [
+        {
+            "name": "rp2040@gpdmax",
+            "displayName": "rp2040@swk-gamepad-2",
+            "description": "builds in swk-gamepad-2 system",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "environment": {
+                "PICO_SDK_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk",
+                "PICO_ELF2UF2_EXE_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk-tools/build-elf2uf2/elf2uf2.exe",
+                "PICO_PIOASM_EXE_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk-tools/build-pioasm/pioasm.exe",
+                "PICO_PICOTOOL_EXE_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk-tools/build-picotool/picotool.exe",
+
+                "CXX":"x86_64-w64-mingw32-g++.exe",
+                "CC":"x86_64-w64-mingw32-gcc.exe",
+                "CMAKE_C_COMPILER_LAUNCHER":"ccache.exe",
+                "CMAKE_CXX_COMPILER_LAUNCHER":"ccache.exe",
+                "CCACHE_DIR":"D:/papps/platforms/msys64/tmp/ccache/cache_rp2040",
+
+                "PICO_TOOLCHAIN_PATH":"D:/papps/platforms/arm/arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi",
+                "PATH":"D:\\papps\\winpy64\\31100b4\\python-3.11.0b4.amd64;$penv{PATH}"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+
+        {
+            "name": "rp2040@gpdwin3",
+            "displayName": "rp2040@swk-gamepad-3",
+            "description": "builds in swk-gamepad-3 system",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "environment": {
+                "PICO_SDK_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk",
+                "PICO_ELF2UF2_EXE_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk-tools/build-elf2uf2/elf2uf2.exe",
+                "PICO_PIOASM_EXE_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk-tools/build-pioasm/pioasm.exe",
+                "PICO_PICOTOOL_EXE_PATH":"Z:/PAPPS/platforms/rp2040/pico-sdk-tools/build-picotool/picotool.exe",
+
+                "CXX":"x86_64-w64-mingw32-g++.exe",
+                "CC":"x86_64-w64-mingw32-gcc.exe",
+                "CMAKE_C_COMPILER_LAUNCHER":"ccache.exe",
+                "CMAKE_CXX_COMPILER_LAUNCHER":"ccache.exe",
+                "CCACHE_DIR":"D:/papps/platforms/msys64/tmp/ccache/cache_rp2040",
+
+                "PICO_TOOLCHAIN_PATH":"D:/papps/platforms/arm/arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi",
+                "PATH":"D:/papps/winpy/31100rc1/python-3.11.0rc1.amd64;$penv{PATH}"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+
+        {
+            "name": "rp2040@default",
+            "displayName": "rp2040@swk-laptop-11",
+            "description": "builds in swk-laptop-11 system",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "environment": {
+                "PICO_SDK_PATH":"d:/papps/platforms/rp2040/pico-sdk",
+                "PICO_ELF2UF2_EXE_PATH":"d:/papps/platforms/rp2040/pico-sdk-tools/build-elf2uf2/elf2uf2.exe",
+                "PICO_PIOASM_EXE_PATH":"d:/papps/platforms/rp2040/pico-sdk-tools/build-pioasm/pioasm.exe",
+                "PICO_PICOTOOL_EXE_PATH":"d:/papps/platforms/rp2040/pico-sdk-tools/build-picotool/picotool.exe",
+
+                "CXX":"x86_64-w64-mingw32-g++.exe",
+                "CC":"x86_64-w64-mingw32-gcc.exe",
+                "CMAKE_C_COMPILER_LAUNCHER":"ccache.exe",
+                "CMAKE_CXX_COMPILER_LAUNCHER":"ccache.exe",
+                "CCACHE_DIR":"D:/papps/platforms/rp2040/tmp/build-cache",
+
+                "PICO_TOOLCHAIN_PATH":"D:/papps/platforms/arm/arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi",
+                "PATH":"D:/papps/winpy/31100rc1/python-3.11.0rc1.amd64;$penv{PATH}"
+            },
+
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Release"
+            }
+        },
+
+        {
+            "name": "rp2040@default-dbg",
+            "displayName": "rp2040@swk-laptop-11 Debug",
+            "description": "builds in swk-laptop-11 system",
+            "inherits":["rp2040@default"],
+
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "rp2040@gpdmax",
+            "configurePreset": "rp2040@gpdmax"
+        },
+        {
+            "name": "rp2040@gpdwin3",
+            "configurePreset": "rp2040@gpdwin3"
+        },
+        {
+            "name": "rp2040@default",
+            "configurePreset": "rp2040@default"
+        },
+        {
+            "name": "rp2040@default-dbg",
+            "configurePreset": "rp2040@default-dbg"
+        }
+    ]
+}

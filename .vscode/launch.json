@@ -1,0 +1,66 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "jlink",
+            "device": "RP2040_M0_0",
+            "interface": "swd",
+            "serverArgs": [
+                "-speed",
+                "10000"
+            ],
+            "showDevDebugOutput": "raw",
+            "preLaunchCommands": [
+                "monitor semihosting enable",
+                "monitor semihosting IOClient 2"
+                // "set mem inaccessible-by-default off"
+            ],
+            "postRestartCommands": [
+                "continue"
+            ],
+            "svdFile": "d:/PAPPS/platforms/rp2040/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
+            "armToolchainPath": "D:/papps/platforms/arm/arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi/bin"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "name": "Debug with OpenOCD",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "serverArgs": [
+                "-d4"
+                // "-lopenocd.log"
+            ],
+            "serverpath": "D:/papps/platforms/rp2040/pico-sdk-tools/build-openocd/bin/openocd.exe",
+            "configFiles": ["Z:/Emb/programmer_debugger/debugger/ftdi/rp2040-dev-board-core0-rtt.cfg"],
+            "searchDir": [],
+            "rttConfig": {
+                "enabled": true,
+                "address": "0x20000000",
+                "searchSize": 4096,
+                "searchId": "SEGGER RTT",
+                "decoders": [
+                    {
+                        "label": "",
+                        "port": 0,
+                        "type": "console"
+                    }
+                ]
+            },
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "svdFile": "d:/PAPPS/platforms/rp2040/pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
+            "armToolchainPath": "D:/papps/platforms/arm/arm-gnu-toolchain-11.3.rel1-mingw-w64-i686-arm-none-eabi/bin"
+        }
+    ]
+}
